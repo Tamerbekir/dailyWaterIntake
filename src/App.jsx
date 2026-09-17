@@ -1,5 +1,5 @@
 import './App.css'
-import { Home } from './Pages/Home.jsx'
+import { Home } from './pages/Home.jsx'
 import { Notes } from './pages/Notes.jsx'
 import { Settings } from './pages/Settings.jsx'
 import { Route, Routes } from "react-router-dom"
