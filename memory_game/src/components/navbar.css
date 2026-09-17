@@ -1,0 +1,56 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 9999px; /* Pill shape */
+  padding: 0.5rem;
+  margin: 0 auto 2rem auto;
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* Touch-friendly mobile target */
+  touch-action: manipulation;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active link style if using React Router's NavLink in the future */
+.nav-link.active {
+  color: #0f172a;
+  background: var(--primary-cyan);
+}
+
+/* Mobile responsive layout */
+@media (max-width: 400px) {
+  .navbar {
+    width: 100%;
+    justify-content: space-around;
+    border-radius: var(--radius-lg); /* Switches from pill to standard card shape on small screens */
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
