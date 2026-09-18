@@ -48,6 +48,7 @@ div:has(> .notes) {
   box-shadow: var(--shadow);
 }
 
+
 h1, .waterConsumption-title {
   font-size: clamp(2rem, 4vw, 1.5rem);
   font-weight: 700;
@@ -174,7 +175,8 @@ input:focus, textarea:focus {
 
 .waterConsumption > div:last-child p {
   font-weight: 500;
-  font-size: 1.7rem;
+  font-size: 1.1rem;
+  padding: 10px;
   margin: 0;
 }
 
@@ -230,6 +232,7 @@ textarea.notes {
   flex-direction: column;
   gap: 0.75rem;
 }
+
 
 .savedNotes p {
   margin: 0;

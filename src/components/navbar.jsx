@@ -5,7 +5,7 @@ export function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link className="nav-link" to="/home">
+      <Link className="nav-link" to="/">
         Home
       </Link>
       <Link className="nav-link" to="/settings">
