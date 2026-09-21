@@ -41,25 +41,29 @@ export function Settings() {
 
 
   return (
-    <div>
+    <div >
       <h1>Settings</h1>
-      <p>Your daily water depends on your weight (lb). Adjust your daily water intake below to tailor it to your needs.</p>
-      <input
-        name='userWeightInfo'
-        onChange={handleUserWeight}
-        value={userWeight.userWeightInfo}
-        type="text"
-        placeholder="Enter weight..."
-      />
-      <button onClick={handleUserWeightSave}>Save</button>
-      <div>
+      <div className="waterConsumption-weightlb-saveBtn">
+        <p>Your daily water depends on your weight (lb). Adjust your daily water intake below to tailor it to your needs.</p>
         <div>
-          {saveWeight.map((weight, index) => (
-            <div>
-              <p key={index}> {weight.userWeightInfo} lb should consume about {Math.round(weight.userWeightInfo * 0.25)} oz of water daily.</p>
-              <button onClick={() => handleDeleteWeight(index)}>Delete</button>
-            </div>
-          ))}
+          <input
+            name='userWeightInfo'
+            onChange={handleUserWeight}
+            value={userWeight.userWeightInfo}
+            type="text"
+            placeholder="Enter weight..."
+          />
+          <button onClick={handleUserWeightSave}>Save</button>
+        </div>
+        <div>
+          <div>
+            {saveWeight.map((weight, index) => (
+              <div>
+                <p key={index}> {weight.userWeightInfo} lb should consume about {Math.round(weight.userWeightInfo * 0.25)} oz of water daily</p>
+                <button onClick={() => handleDeleteWeight(index)}>Delete</button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div >
