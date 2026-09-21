@@ -98,6 +98,7 @@ export function Home() {
         <p className="waterConsumption-total">Daily Total: {save.reduce((total, item) => total + item.count, 0)} oz</p>
       </div>
       <div>
+        <p>test</p>
         {errorMessage && <p className="errorMessage">Missing Entry</p>}
       </div>
       <div>
