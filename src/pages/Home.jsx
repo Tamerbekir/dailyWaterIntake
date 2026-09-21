@@ -10,14 +10,25 @@ export function Home() {
 
 
   const currentDate = new Date()
-  const formattedDate = currentDate.toLocaleString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
+
+  const formattedDateDay = currentDate.toLocaleString('en-US', {
+    // hour: '2-digit',
+    // minute: '2-digit',
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
     date: 'numeric',
-    hour12: false
+    // hour12: true
+  })
+
+  const formattedDateTime = currentDate.toLocaleString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    // year: 'numeric',
+    // month: 'numeric',
+    // day: 'numeric',
+    // date: 'numeric',
+    hour12: true
   })
 
   // const [liquid, setLiquid] = useState({
@@ -44,7 +55,8 @@ export function Home() {
       {
         count: count,
         // liquidName: liquid.liquidName,
-        date: formattedDate
+        dateTime: formattedDateTime,
+        dateDay: formattedDateDay,
       }]
       setSave(updatedSave)
       localStorage.setItem('waterConsumption', JSON.stringify(updatedSave))
@@ -57,10 +69,9 @@ export function Home() {
   }
 
   const handleReset = () => {
+    setSave([])
+    localStorage.removeItem('waterConsumption')
     setCount(0)
-    // setLiquid({
-    //   liquidName: ''
-    // })
     setErrorMessage(false)
   }
 
@@ -76,7 +87,7 @@ export function Home() {
     const updatedSave = [...save]
     updatedSave.splice(index, 1)
     setSave(updatedSave)
-    localStorage.removeItem('waterConsumption')
+    localStorage.setItem('waterConsumption', JSON.stringify(updatedSave))
   }
 
   return (
@@ -86,7 +97,9 @@ export function Home() {
       <button className="waterConsumption-button-plus" onClick={handlePlusClick}>+</button>
       <button className="waterConsumption-button-minus" onClick={handleMinusClick}>-</button>
       <button className="waterConsumption-button-save" onClick={handleWaterConsumptionSave}>Save</button>
-      <button className="waterConsumption-button-reset" onClick={handleReset}>Reset</button>
+      <button className="waterConsumption-button-reset" onClick={handleReset}>Start New Day</button>
+      <div className="waterConsumption-button-reset-container">
+      </div>
       <div>
         {/* <input
           className='liquidNameInput'
@@ -94,19 +107,23 @@ export function Home() {
           placeholder='Liquid..'
           value={liquid.liquidName}
           onChange={handleLiquidName}
-        /> */}
-        <p className="waterConsumption-total">Daily Total: {save.reduce((total, item) => total + item.count, 0)} oz</p>
+          /> */}
+        <p className="waterConsumption-total-amount"> Daily Total: {save.reduce((total, item) => total + item.count, 0)} oz</p>
+        <p className="waterConsumption-total">{localStorage.getItem('waterConsumption') !== null ? formattedDateDay : ""}</p>
+
       </div>
       <div>
         {errorMessage && <p className="errorMessage">Missing Entry</p>}
       </div>
-      <div>
+      <div className="daily-water-div">
         {save.map((num, index) => (
           <div key={index}>
             <p className="waterConsumption-count-save">{num.count} oz</p>
-            <p className="waterConsumption-date-save">{num.date}</p>
+            <p className="waterConsumption-date-save">{num.dateTime}</p>
             {/* <p className="waterConsumption-liquid-name-save">{num.liquidName}</p> */}
-            <button onClick={() => handleDelete(index)}>Delete</button>
+            <span className="material-symbols-outlined" onClick={() => handleDelete(index)}>
+              delete
+            </span>
           </div>
         ))}
       </div>

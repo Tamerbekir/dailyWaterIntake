@@ -45,7 +45,9 @@ export function Notes() {
         {save.map((notes, index) => (
           <div key={index}>
             <p>{notes.notes}</p>
-            <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+            <span className="material-symbols-outlined" onClick={() => handleDelete(index)}>
+              delete
+            </span>
           </div>
         ))}
       </div>
