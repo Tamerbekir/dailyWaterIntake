@@ -15,14 +15,8 @@
   box-shadow: var(--shadow);
 }
 
-.waterConsumption-total {
-  display: flex;
-  justify-content: center;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-top: 0.5rem;
-}
+
+
 
 .nav-link {
   color: var(--text-muted);
